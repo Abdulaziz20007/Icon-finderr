@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="icon">
+    <input type="color" id="color">
+    <input type="checkbox" id="checkbox" onclick="checkboxx()">
+    <img style="border: 1px solid black; width: 65px; height: 65px;" scrolling="no" src="" frameborder="0"></img>
+    <a href="" download>Download</a>
+    <script src="./script.js"></script>
+
+    <script>
+        document.querySelector('#icon').oninput = function() {
+            geticon();
+        };
+        document.querySelector('#color').oninput = function() {
+            geticon();
+        };
+        function checkboxx() {
+            const colorInput = document.querySelector('#color');
+            if (document.querySelector('#checkbox').checked == true) {
+                colorInput.disabled = true;
+            }
+            else {
+                colorInput.disabled = false;
+            }
+            geticon();
+        };
+        function geticon() {
+            const colorInput = document.querySelector('#color');
+            const iconInput = document.querySelector('#icon');
+            const checkbox = document.querySelector('#checkbox');
+            const url = `https://img.icons8.com/${checkbox.checked ? 'color' : colorInput.value.substring(1)}/${iconInput.value}`;
+            document.querySelector('img').src = url;
+            document.querySelector('a').href = url;
+        }
+    </script>
+</body>
+</html>
